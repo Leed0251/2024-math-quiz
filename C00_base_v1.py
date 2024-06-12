@@ -1,5 +1,6 @@
 from tkinter import *
 import G01_select_questions_v1
+import G02_quiz_v1
 
 class QuizGame:
     def __init__(self, root):
@@ -36,6 +37,9 @@ class QuizGame:
             
             self.error_frame.grid_forget()
             self.error_label.config(text=errMessage)
+
+            # Load main quiz
+            G02_quiz_v1.QuestionFrame(self, root)
         else:
             # User input was not valid
             self.error_frame.grid(row=3)
