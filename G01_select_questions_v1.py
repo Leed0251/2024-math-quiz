@@ -1,7 +1,7 @@
 from tkinter import *
 
 class Gui:
-    def __init__(self, partner, root):
+    def __init__(self, root):
         background_color = "#DAE8FC"
 
         root.config(
@@ -34,39 +34,39 @@ class Gui:
 
         self.entry_frame = Frame(self.input_frame,
             highlightthickness=2,
-            highlightbackground="#82B366",
+            highlightbackground="#000000",
         )
         self.entry_frame.grid(row = 0, column=0, padx=10, pady=10)
 
-        partner.number_box = Entry(self.entry_frame,
+        self.number_box = Entry(self.entry_frame,
             text="1",
             font=("Arial", "14"),
             width=12,
 
             relief="solid",
             borderwidth=0,
-            bg="#D5E8D4"
+            bg="#FFFFFF"
         )
-        partner.number_box.grid()
+        self.number_box.grid()
 
         self.enter_frame = Frame(self.input_frame,
             highlightthickness=2,
-            highlightbackground="#82B366",
+            highlightbackground="#000000",
         )
         self.enter_frame.grid(row=0, column=1)
 
-        partner.enter_button = Button(self.enter_frame,
+        self.enter_button = Button(self.enter_frame,
             text=">",
             font=("Arial", "10", "bold"),
             width=3,
 
             relief="solid",
             borderwidth=0,
-            bg="#D5E8D4"
+            bg="#FFFFFF"
         )
-        partner.enter_button.grid()
+        self.enter_button.grid()
 
-        partner.error_frame = Frame(self.select_frame,
+        self.error_frame = Frame(self.select_frame,
             highlightthickness=2,
             highlightbackground="#B85450",
             background="#F8CECC",
@@ -74,11 +74,11 @@ class Gui:
             pady=5
         )
 
-        partner.error_label = Label(partner.error_frame,
+        self.error_label = Label(self.error_frame,
             text="",
             font=("Arial", "10"),
 
             bg="#F8CECC",
             fg="#000000",
         )
-        partner.error_label.grid()
+        self.error_label.grid()

@@ -1,56 +1,50 @@
 from tkinter import *
-from functools import partial # To prevent unwanted windows
 
 class QuestionFrame:
     def __init__(self, partner, root):
         root.withdraw()
         bg = "#E1D5E7"
 
-        partner.question_window = Toplevel()
-
-        # If users press cross at top, closes quiz and opens first gui
-        partner.question_window.protocol('WM_DELETE_WINDOW',
-            partial(self.close_window, partner, root)
-        )
+        self.question_window = Toplevel()
 
         # Appearance
-        partner.question_window.config(
+        self.question_window.config(
             bg=bg,
             padx=5,
             pady=5
         )
 
-        partner.question_label = Label(partner.question_window)
-        partner.question_label.config(text=f"Question 1 / {partner.question_count.get()}",
+        self.question_label = Label(self.question_window)
+        self.question_label.config(text=f"Question 1 / {partner.question_count.get()}",
             background=bg,
             font=("Arial", "12", "bold"),
             padx=5,
             pady=5
         )
-        partner.question_label.grid(row=0)
+        self.question_label.grid(row=0)
 
-        self.question_frame = Frame(partner.question_window)
+        self.question_frame = Frame(self.question_window)
         self.question_frame.config(
             highlightbackground="#000000",
             highlightthickness=2
         )
         self.question_frame.grid(row=1, padx=5, pady=5)
-        partner.question_display = Label(self.question_frame,
+        self.question_display = Label(self.question_frame,
             background="#FFFFFF",
             font=("Arial", "16", "bold"),
             padx=5,
             pady=5,
             width=21
         )
-        partner.question_display.grid(row=0)
+        self.question_display.grid(row=0)
 
         # User answer input
-        self.answer_frame = Frame(partner.question_window)
+        self.answer_frame = Frame(self.question_window)
         self.answer_frame.config(bg=bg)
         self.answer_frame.grid(row=2, padx=5, pady=5)
         
-        partner.answer_container = Frame(self.answer_frame)
-        partner.answer_container.config(
+        self.answer_container = Frame(self.answer_frame)
+        self.answer_container.config(
             highlightbackground="#D79B00",
             highlightthickness=2,
 
@@ -59,10 +53,10 @@ class QuestionFrame:
             padx=2,
             pady=2
         )
-        partner.answer_container.grid(padx=5, pady=5)
+        self.answer_container.grid(padx=5, pady=5)
 
-        partner.answer_box = Entry(partner.answer_container)
-        partner.answer_box.config(
+        self.answer_box = Entry(self.answer_container)
+        self.answer_box.config(
             text="",
             font=("Arial", "12"),
             width=19,
@@ -71,35 +65,35 @@ class QuestionFrame:
             borderwidth=0,
             bg="#FFE6CC"
         )
-        partner.answer_box.grid(row=0, column=0, padx=5, pady=5)
+        self.answer_box.grid(row=0, column=0, padx=5, pady=5)
 
-        partner.response_frame = Frame(self.answer_frame)
-        partner.response_frame.config(
+        self.response_frame = Frame(self.answer_frame)
+        self.response_frame.config(
             width=19,
             relief="solid",
             borderwidth=0,
             highlightthickness=2
         )
 
-        partner.response_label = Label(partner.response_frame)
-        partner.response_label.config(
+        self.response_label = Label(self.response_frame)
+        self.response_label.config(
             text="",
             font=("Arial", "12"),
             width=19,
         )
-        partner.response_label.grid(padx=5, pady=5)
+        self.response_label.grid(padx=5, pady=5)
 
         # Submit button
-        partner.submit_frame = Frame(self.answer_frame)
-        partner.submit_frame.config(
+        self.submit_frame = Frame(self.answer_frame)
+        self.submit_frame.config(
             bg="#FFE6CC",
             highlightthickness=2,
             highlightbackground="#D79B00"
         )
-        partner.submit_frame.grid(row=0, column=1, padx=5, pady=5)
+        self.submit_frame.grid(row=0, column=1, padx=5, pady=5)
 
-        partner.answer_submit = Button(partner.submit_frame)
-        partner.answer_submit.config(
+        self.answer_submit = Button(self.submit_frame)
+        self.answer_submit.config(
             text="Enter",
             font=("Arial", "12"),
             width=8,
@@ -111,10 +105,10 @@ class QuestionFrame:
             padx=5,
             pady=5
         )
-        partner.answer_submit.grid()
+        self.answer_submit.grid()
 
         # Error display
-        partner.quiz_error_frame = Frame(partner.question_window,
+        self.quiz_error_frame = Frame(self.question_window,
             highlightthickness=2,
             highlightbackground="#B85450",
             background="#F8CECC",
@@ -122,7 +116,7 @@ class QuestionFrame:
             pady=5
         )
 
-        partner.quiz_error_label = Label(partner.quiz_error_frame,
+        self.quiz_error_label = Label(self.quiz_error_frame,
             text="",
             font=("Arial", "10"),
             width=32,
@@ -130,10 +124,10 @@ class QuestionFrame:
             bg="#F8CECC",
             fg="#000000",
         )
-        partner.quiz_error_label.grid()
+        self.quiz_error_label.grid()
 
         # Row 3 buttons
-        self.button_frame = Frame(partner.question_window)
+        self.button_frame = Frame(self.question_window)
         self.button_frame.config(bg=bg, padx=5, pady=5)
         self.button_frame.grid(row=4, padx=5, pady=(0, 5))
 
@@ -146,8 +140,8 @@ class QuestionFrame:
         )
         self.help_frame.grid(row=0, column=0, padx=5)
 
-        partner.help_button = Button(self.help_frame)
-        partner.help_button.config(
+        self.help_button = Button(self.help_frame)
+        self.help_button.config(
             text="Help",
             font=("Arial", "12"),
             width=8,
@@ -159,7 +153,7 @@ class QuestionFrame:
             padx=5,
             pady=5
         )
-        partner.help_button.grid()
+        self.help_button.grid()
 
         # Export button
         self.export_frame = Frame(self.button_frame)
@@ -170,8 +164,10 @@ class QuestionFrame:
         )
         self.export_frame.grid(row=0, column=1, padx=5)
 
-        partner.export_button = Button(self.export_frame)
-        partner.export_button.config(
+        self.export_button = Button(self.export_frame)
+        self.export_button.config(
+            state=DISABLED,
+
             text="Export",
             font=("Arial", "12"),
             width=8,
@@ -183,7 +179,7 @@ class QuestionFrame:
             padx=5,
             pady=5
         )
-        partner.export_button.grid()
+        self.export_button.grid()
 
         # Start over button
 
@@ -195,8 +191,8 @@ class QuestionFrame:
         )
         self.start_over_frame.grid(row=0, column=2, padx=5)
 
-        partner.start_over_button = Button(self.start_over_frame)
-        partner.start_over_button.config(
+        self.start_over_button = Button(self.start_over_frame)
+        self.start_over_button.config(
             text="Start Over",
             font=("Arial", "12"),
             width=8,
@@ -208,8 +204,4 @@ class QuestionFrame:
             padx=5,
             pady=5
         )
-        partner.start_over_button.grid()
-
-    def close_window(self, partner, root):
-        root.deiconify()
-        partner.question_window.destroy()
+        self.start_over_button.grid()
