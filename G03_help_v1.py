@@ -4,7 +4,7 @@ class HelpGui:
     def __init__(self, partner):
         bg = "#FFF2CC"
 
-        self.help_text = " huireg huighiuweegh iuwegguyegfjoighuidbh ub husghiugguyg hiegh uieghiusghiueggyug g iughyusgiuesg hiuseh iuseghsiufuyf fhrherhgwehah thth rththrhtrfh"
+        self.help_text = ""
 
         self.help_window = Toplevel()
         self.help_window.config(
@@ -17,6 +17,7 @@ class HelpGui:
             state=DISABLED
         )
 
+        # Heading text
         self.heading = Label(self.help_window)
         self.heading.config(
             padx=5,
@@ -27,16 +28,19 @@ class HelpGui:
         )
         self.heading.grid(padx=5, pady=5)
 
+        # Help text
         self.label = Label(self.help_window)
         self.label.config(
             padx=5,
             pady=5,
             bg=bg,
             text=self.help_text,
+            justify=LEFT,
             wraplength=260
         )
         self.label.grid(padx=5, pady=5)
-
+        
+        # Dismiss button
         self.dismiss_button_frame = Frame(self.help_window)
         self.dismiss_button_frame.config(
             bg="#F5F5F5",

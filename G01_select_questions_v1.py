@@ -2,15 +2,18 @@ from tkinter import *
 
 class Gui:
     def __init__(self, root):
+        # Apply background colour to root
         background_color = "#DAE8FC"
 
         root.config(
             bg=background_color
         )
 
+        # The container for all the elements
         self.select_frame = Frame(root, bg=background_color)
         self.select_frame.grid(padx=15, pady=10)
 
+        # Root heading text
         self.heading = Label(self.select_frame,
             text="Math Quiz",
             font=("Arial", "24", "bold"),
@@ -19,6 +22,7 @@ class Gui:
         )
         self.heading.grid(row=0)
 
+        # Subheading text
         self.sub_heading = Label(self.select_frame,
             text="How many questions would you like to answer?",
             font=("Arial", "14"),
@@ -29,6 +33,7 @@ class Gui:
         )
         self.sub_heading.grid(row=1)
 
+        # Contains the user input and enter button
         self.input_frame = Frame(self.select_frame, bg=background_color)
         self.input_frame.grid(row=2)
 
@@ -38,6 +43,7 @@ class Gui:
         )
         self.entry_frame.grid(row = 0, column=0, padx=10, pady=10)
 
+        # Box where the user enters how many questions they want to answer
         self.number_box = Entry(self.entry_frame,
             text="1",
             font=("Arial", "14"),
@@ -55,6 +61,7 @@ class Gui:
         )
         self.enter_frame.grid(row=0, column=1)
 
+        # The enter button
         self.enter_button = Button(self.enter_frame,
             text=">",
             font=("Arial", "10", "bold"),
@@ -66,6 +73,7 @@ class Gui:
         )
         self.enter_button.grid()
 
+        # Communicates to the user when their input is invalid
         self.error_frame = Frame(self.select_frame,
             highlightthickness=2,
             highlightbackground="#B85450",
