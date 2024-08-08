@@ -1,8 +1,9 @@
 from tkinter import *
+import datetime
 
 class ExportGui():
     def __init__(self, partner):
-        instructions = "This is the export frame and this label will give the user instructions on how to use the export frame so they can export their final report, this can be used half way through the quiz or after they have completed it, and this is an extra sentence to make sure it is really long so I can properly test the text wrapping length"
+        instructions = f"Below is a list of the content that you are exporting, if you do not enter in a file name it will be named {datetime.datetime.today().strftime('%Y_%m_%d')}_Results.csv, This file includes all questions you have answered along with a score from 0 to 100 based on how well you have done. Then just click the green export button to make your file."
         bg="#DAE8FC"
 
         partner.quiz_window.export_button.config(state=DISABLED)

@@ -4,7 +4,7 @@ class HelpGui:
     def __init__(self, partner):
         bg = "#FFF2CC"
 
-        self.help_text = ""
+        self.help_text = "To answer questions in the quiz you must enter into the white box the answer of the question above, if an x is present then you are solving x. You can export at any time where you will be given a list of all questions and their answers that you have entered in so far in the quiz."
 
         self.help_window = Toplevel()
         self.help_window.config(
